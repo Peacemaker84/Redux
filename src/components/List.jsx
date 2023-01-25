@@ -4,12 +4,11 @@ import { useSelector } from "react-redux";
 
 const List = () => {
   const goods = useSelector((state) => state.product);
-  console.log(goods);
   return (
     <table>
       <thead>
         <tr>
-          <th>Название </th>
+          <th>Название</th>
           <th>Цена</th>
           <th>Функционал</th>
         </tr>

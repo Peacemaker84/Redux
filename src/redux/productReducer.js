@@ -1,27 +1,22 @@
 // значения по умолчанию
 const initialState = [
   { name: "Огурец", price: 200 },
-  { name: "капуста", price: 70 },
+  { name: "Капуста", price: 70 },
 ];
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD":
-      // проверка на дублирование названией
       const test = state.filter(
-        (el) =>
-          el.name.toLocaleLowerCase() ===
-          action.payload.name.toLocaleLowerCase()
+        (el) => el.name.toLowerCase() === action.payload.name.toLowerCase()
       );
+
       return test.length > 0 ? state : [...state, action.payload];
-    // удаляем продукт
     case "DEL":
       return state.filter((el) => el.name !== action.payload);
     case "UPD":
       const check = state.filter(
-        (el) =>
-          el.name.toLocaleLowerCase() ===
-          action.payload.data.name.toLocaleLowerCase()
+        (el) => el.name.toLowerCase() === action.payload.data.name.toLowerCase()
       );
       if (check.length > 0) {
         return state;
@@ -33,4 +28,5 @@ const productReducer = (state = initialState, action) => {
   }
   return state;
 };
+
 export default productReducer;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../redux/action/productActions";
+import { addProduct } from "../redux/actions/productActions";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -14,12 +14,12 @@ const Form = () => {
     };
     console.log(product);
     dispatch(addProduct(product));
-    //или  dispatch({ type: "ADD", payload: product });
+    // dispatch({type: "ADD", payload: product});
   };
   return (
     <form onSubmit={handler}>
       <div className="row">
-        <label for="name">Название товара</label>
+        <label htmlFor="name">Название товара</label>
         <input
           type="text"
           id="name"
@@ -29,7 +29,7 @@ const Form = () => {
         />
       </div>
       <div className="row">
-        <label for="name">Цена</label>
+        <label htmlFor="price">Цена</label>
         <input
           type="number"
           id="price"

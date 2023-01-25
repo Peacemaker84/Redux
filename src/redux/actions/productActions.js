@@ -4,7 +4,6 @@ const addProduct = (obj) => {
     payload: obj,
   };
 };
-
 const delProduct = (name) => {
   return {
     type: "DEL",
@@ -13,8 +12,9 @@ const delProduct = (name) => {
 };
 const updProduct = (obj) => {
   return {
-    typr: "UPD",
+    type: "UPD",
     payload: obj,
   };
 };
+
 export { addProduct, delProduct, updProduct };

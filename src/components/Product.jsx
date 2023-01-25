@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { delProduct, updProduct } from "../redux/action/productActions";
+import { delProduct, updProduct } from "../redux/actions/productActions";
 
 const Product = (props) => {
   const dispatch = useDispatch();
@@ -11,8 +11,7 @@ const Product = (props) => {
   const delHandler = () => {
     dispatch(delProduct(props.name));
   };
-
-  const updHandleer = () => {
+  const updHandler = () => {
     dispatch(
       updProduct({
         product: props.name,
@@ -26,7 +25,6 @@ const Product = (props) => {
     setP(props.price);
     setUpdate(false);
   };
-
   const clear = () => {
     setUpdate(false);
     setN(props.name);
@@ -46,19 +44,29 @@ const Product = (props) => {
           <input value={p} onChange={(e) => setP(e.target.value)} />
         ) : (
           props.price
-        )}{" "}
+        )}
       </td>
       <td>
-        <button
-          onClick={() => {
-            setUpdate(true);
-          }}
-        >
-          Изменить
-        </button>
-        <button onClick={delHandler}>Удалить</button>
+        {update ? (
+          <>
+            <button onClick={updHandler}>Подтвердить</button>
+            <button onClick={clear}>Отменить</button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                setUpdate(true);
+              }}
+            >
+              Изменить
+            </button>
+            <button onClick={delHandler}>Удалить</button>
+          </>
+        )}
       </td>
     </tr>
   );
 };
+
 export default Product;
